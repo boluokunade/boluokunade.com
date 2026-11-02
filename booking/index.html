@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Bolu Okunade</title>
+<meta name="description" content="Book Bolu Okunade, business strategist and 2x TEDx speaker, for your conference, company or community.">
+<meta property="og:title" content="Book Bolu Okunade">
+<meta property="og:description" content="Keynotes, panels, workshops and team trainings.">
+<meta property="og:image" content="https://boluokunade.com/img/og.jpg">
+<meta name="theme-color" content="#0E0D0C">
+<link rel="icon" href="../img/mark-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="wm" href="../">Bolu Okunade</a>
+    <div class="links caps">
+      <a href="../#about">About</a>
+      <a href="../incubator-sessions/">Sessions</a>
+      <a class="btn btn-line" href="./">Book Bolu</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap split">
+    <aside class="aside">
+      <div class="caps label">Bookings</div>
+      <h1 class="display">Book <em>Bolu.</em></h1>
+      <p>For conferences, companies, founder communities and business events.</p>
+      <ul class="points">
+        <li><b>01</b>Keynotes</li>
+        <li><b>02</b>Panels and fireside chats</li>
+        <li><b>03</b>Workshops and masterclasses</li>
+        <li><b>04</b>Team and leadership trainings</li>
+      </ul>
+      <img src="../img/stage-auditorium-crowd.jpg" alt="Bolu Okunade speaking to a packed auditorium">
+    </aside>
+
+    <div>
+      <form id="form" novalidate>
+        <h2>Event details</h2>
+        <p class="sub">Tell us about your event. Bolu's team will get back to you.</p>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <fieldset>
+          <legend>About you</legend>
+          <div class="row">
+            <div class="f"><label for="name">Full name <i>*</i></label><input id="name" name="Full name" type="text" autocomplete="name" required></div>
+            <div class="f"><label for="org">Organisation <i>*</i></label><input id="org" name="Organisation" type="text" autocomplete="organization" required></div>
+          </div>
+          <div class="row">
+            <div class="f"><label for="email">Email <i>*</i></label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+            <div class="f"><label for="phone">Phone / WhatsApp <i>*</i></label><input id="phone" name="Phone / WhatsApp" type="tel" autocomplete="tel" required></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The event</legend>
+          <div class="f"><label for="event">Event name <i>*</i></label><input id="event" name="Event name" type="text" required></div>
+          <div class="f">
+            <span class="q">Type of engagement <i>*</i></span>
+            <div class="pills" data-required="Type of engagement">
+              <label><input type="radio" name="Type of engagement" value="Keynote"><span>Keynote</span></label>
+              <label><input type="radio" name="Type of engagement" value="Panel / fireside chat"><span>Panel / fireside chat</span></label>
+              <label><input type="radio" name="Type of engagement" value="Workshop / masterclass"><span>Workshop / masterclass</span></label>
+              <label><input type="radio" name="Type of engagement" value="Team training"><span>Team training</span></label>
+              <label><input type="radio" name="Type of engagement" value="Podcast / media"><span>Podcast / media</span></label>
+              <label><input type="radio" name="Type of engagement" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+          <div class="f">
+            <span class="q">Format <i>*</i></span>
+            <div class="pills" data-required="Format">
+              <label><input type="radio" name="Format" value="In person"><span>In person</span></label>
+              <label><input type="radio" name="Format" value="Virtual"><span>Virtual</span></label>
+              <label><input type="radio" name="Format" value="Hybrid"><span>Hybrid</span></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="f"><label for="date">Event date <i>*</i></label><input id="date" name="Event date" type="date" required></div>
+            <div class="f"><label for="loc">City and country <i>*</i></label><input id="loc" name="City and country" type="text" required></div>
+          </div>
+          <div class="row">
+            <div class="f"><label for="size">Expected audience</label>
+              <select id="size" name="Expected audience"><option value="">Select</option><option>Under 100</option><option>100 – 500</option><option>500 – 1,000</option><option>1,000 – 5,000</option><option>5,000+</option></select></div>
+            <div class="f"><label for="budget">Proposed budget <i>*</i></label><input id="budget" name="Proposed budget" type="text" required></div>
+          </div>
+          <div class="f"><label for="msg">Tell us about the event and audience</label><textarea id="msg" name="Details" placeholder="Theme, audience, what you'd like Bolu to speak on"></textarea></div>
+        </fieldset>
+
+        <div class="submit">
+          <button class="btn" type="submit" id="send">Send booking request</button>
+          <small>We reply by email.</small>
+        </div>
+        <p class="err" id="err"></p>
+      </form>
+
+      <div class="done" id="done" role="status">
+        <div class="caps label" style="color:var(--ox)">Request received</div>
+        <h2>Thank you. <em>We'll be in touch.</em></h2>
+        <p>Your booking request is with Bolu's team. You'll hear back by email.</p>
+        <a class="btn" href="../">Back to home</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Bolu Okunade</span>
+    <div class="socials caps">
+      <a href="https://www.instagram.com/boluokunade/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/theboluokunade" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@boluokunade" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Booking requests are emailed by FormSubmit to the main inbox, with a copy to the second one.
+const TO = 'bolex2009@gmail.com', CC = 'info@boluokunade.com';
+const form = document.getElementById('form'), err = document.getElementById('err'), send = document.getElementById('send');
+
+function fail(msg, el) { err.textContent = msg; err.classList.add('on'); if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  err.classList.remove('on');
+  for (const el of form.querySelectorAll('[required]')) {
+    if (!el.value.trim()) return fail('Please fill in: ' + el.closest('.f').querySelector('label').textContent.replace('*', '').trim(), el);
+  }
+  if (!/^\S+@\S+\.\S+$/.test(form.Email.value)) return fail('Please enter a valid email address.', form.Email);
+  for (const group of form.querySelectorAll('[data-required]')) {
+    if (!group.querySelector('input:checked')) return fail('Please choose: ' + group.dataset.required, group);
+  }
+  const data = Object.fromEntries(new FormData(form));
+  if (data._honey) return;
+  delete data._honey;
+  Object.assign(data, {
+    _subject: 'Booking request: ' + data['Event name'] + ' (' + data['Organisation'] + ')',
+    _cc: CC, _replyto: data.Email, _template: 'table'
+  });
+  send.disabled = true; send.textContent = 'Sending...';
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/' + TO, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+    form.style.display = 'none';
+    document.getElementById('done').classList.add('on');
+    scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (x) {
+    fail('Something went wrong sending your request. Please try again, or message @boluokunade on Instagram.');
+  } finally {
+    send.disabled = false; send.textContent = 'Send booking request';
+  }
+});
+</script>
+</body>
+</html>
