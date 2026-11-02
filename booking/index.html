@@ -3,11 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book Bolu Okunade</title>
-<meta name="description" content="Book Bolu Okunade, business strategist and 2x TEDx speaker, for your conference, company or community.">
+<title>Book Bolu Okunade | Keynote Speaker &amp; Business Strategist</title>
+<meta name="description" content="Book Bolu Okunade, business strategist and 2x TEDx speaker, for keynotes, panels, workshops and team trainings at your conference, company or community event.">
 <meta property="og:title" content="Book Bolu Okunade">
 <meta property="og:description" content="Keynotes, panels, workshops and team trainings.">
 <meta property="og:image" content="https://boluokunade.com/img/og.jpg">
+<link rel="canonical" href="https://boluokunade.com/booking/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bolu Okunade">
+<meta property="og:url" content="https://boluokunade.com/booking/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Book Bolu Okunade">
+<meta name="twitter:description" content="Keynotes, panels, workshops and team trainings.">
+<meta name="twitter:image" content="https://boluokunade.com/img/og.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boluokunade.com/"},{"@type":"ListItem","position":2,"name":"Book Bolu","item":"https://boluokunade.com/booking/"}]}
+</script>
 <meta name="theme-color" content="#0E0D0C">
 <link rel="icon" href="../img/mark-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +59,7 @@
       <form id="form" novalidate>
         <h2>Event details</h2>
         <p class="sub">Tell us about your event. Bolu's team will get back to you.</p>
-        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input class="hp" type="text" name="_honey" aria-label="Leave empty" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <fieldset>
           <legend>About you</legend>
@@ -124,8 +136,9 @@
 </footer>
 
 <script>
-// Booking requests are emailed by FormSubmit to the main inbox, with a copy to the second one.
-const TO = 'bolex2009@gmail.com', CC = 'info@boluokunade.com';
+// Booking requests go to a Google Apps Script ("Website booking emails" in boluokunade.adm@gmail.com's Drive),
+// which adds a row to the "Booking requests - boluokunade.com" sheet and emails bolex2009@gmail.com and info@boluokunade.com.
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxy_EHmBUrSCMU8Kr7Dqgx9Bl5hw4Lb_JgFvkrtEoCcEPqjrMsXY6K5Gse7lT5xioHbSg/exec';
 const form = document.getElementById('form'), err = document.getElementById('err'), send = document.getElementById('send');
 
 function fail(msg, el) { err.textContent = msg; err.classList.add('on'); if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
@@ -143,17 +156,12 @@ form.addEventListener('submit', async e => {
   const data = Object.fromEntries(new FormData(form));
   if (data._honey) return;
   delete data._honey;
-  Object.assign(data, {
-    _subject: 'Booking request: ' + data['Event name'] + ' (' + data['Organisation'] + ')',
-    _cc: CC, _replyto: data.Email, _template: 'table'
-  });
   send.disabled = true; send.textContent = 'Sending...';
   try {
-    const r = await fetch('https://formsubmit.co/ajax/' + TO, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
-    });
+    // text/plain keeps this a "simple" request, so the browser skips the CORS preflight Apps Script can't answer.
+    const r = await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
     const j = await r.json().catch(() => ({}));
-    if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+    if (!r.ok || !j.ok) throw new Error(r.status);
     form.style.display = 'none';
     document.getElementById('done').classList.add('on');
     scrollTo({ top: 0, behavior: 'smooth' });

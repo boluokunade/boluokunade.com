@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /incubator-sessions/next/
+
+Sitemap: https://boluokunade.com/sitemap.xml
